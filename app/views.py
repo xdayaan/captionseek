@@ -7,8 +7,9 @@ def home(request):
     if request.method == 'POST':
         form = VideoForm(request.POST, request.FILES)
         if form.is_valid():
-            video = form.save()  # Save the video and get the instance
-            # Trigger the Celery task
+            video = form.save() 
+            video.refresh_from_db()
+
             generate_subtitles.delay(video.id, video.title)
             return redirect('video_upload_success')
     else:
