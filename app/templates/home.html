@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block title %}Caption Seek - Home{% endblock %}
+
+{% block content %}
+<div class="upload-video">
+    <div>
+        <h1>Caption Seek</h1>
+        <p class="about">CaptionSeek revolutionizes video search by leveraging the power of subtitles. This innovative platform allows users to upload videos, which are then automatically processed to generate precise, searchable subtitles. Whether it’s a music video, an interview, or a lecture, CaptionSeek enables you to find specific words or phrases within the video seamlessly. Simply upload your video, let CaptionSeek work its magic, and quickly locate any segment by searching the subtitles. Enhance your video accessibility and discover content with unparalleled ease using CaptionSeek.</p>
+    </div>
+    <div class="upload-video-form">
+        <h3>Upload Video</h3>
+        <div class="form">
+            <form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button class="submit" type="submit">Upload</button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
